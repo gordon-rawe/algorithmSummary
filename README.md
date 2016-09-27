@@ -1,1 +1,2 @@
 # algorithmSummary
+# wayToOffer
