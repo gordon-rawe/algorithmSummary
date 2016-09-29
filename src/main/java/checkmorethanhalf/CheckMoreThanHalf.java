@@ -36,13 +36,5 @@ public class CheckMoreThanHalf {
     public static void main(String[] args) {
         int[] source = generateArray();
         System.out.println(calcNumberMoreThanHalf(source));
-        TreeSet<Integer> set = new TreeSet();
-        set.add(3);
-        set.add(2);
-        set.add(6);
-        set.add(1);
-        set.add(9);
-        set.forEach(System.out::println);
-//        System.out.println(set.first());
     }
 }
