@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="264e4b56-0f57-4faf-a196-1db21ef7f6c0" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/lastk/LastKNode.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/mergelinkedlist/MergeTwoSortedLinkedList.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/oddevenswap/OddEvenSwap.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/classes/main/linknode/TestCase.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/linknode/TestCase.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/linknode/Node.class" afterPath="$PROJECT_DIR$/build/classes/main/linknode/Node.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/linknode/Node.java" afterPath="$PROJECT_DIR$/src/main/java/linknode/Node.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/mergelinkedlist/MergeTwoSortedLinkedList.java" afterPath="$PROJECT_DIR$/src/main/java/mergelinkedlist/MergeTwoSortedLinkedList.java" />
     </list>
     <ignored path="summary.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -148,8 +140,8 @@
       <file leaf-file-name="MergeTwoSortedLinkedList.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/mergelinkedlist/MergeTwoSortedLinkedList.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="295">
-              <caret line="45" column="37" selection-start-line="45" selection-start-column="37" selection-end-line="45" selection-end-column="37" />
+            <state relative-caret-position="220">
+              <caret line="47" column="27" selection-start-line="47" selection-start-column="27" selection-end-line="47" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -1293,12 +1285,12 @@
       <updated>1474013627302</updated>
       <workItem from="1474013632640" duration="4800000" />
       <workItem from="1474983313880" duration="41000" />
-      <workItem from="1474983739743" duration="10419000" />
+      <workItem from="1474983739743" duration="11549000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15260000" />
+    <option name="totallyTimeSpent" value="16390000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -1562,8 +1554,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/mergelinkedlist/MergeTwoSortedLinkedList.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="295">
-          <caret line="45" column="37" selection-start-line="45" selection-start-column="37" selection-end-line="45" selection-end-column="37" />
+        <state relative-caret-position="220">
+          <caret line="47" column="27" selection-start-line="47" selection-start-column="27" selection-end-line="47" selection-end-column="27" />
           <folding />
         </state>
       </provider>

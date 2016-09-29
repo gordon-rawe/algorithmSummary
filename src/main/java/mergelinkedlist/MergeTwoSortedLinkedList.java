@@ -17,8 +17,8 @@ public class MergeTwoSortedLinkedList {
     public static LastKNode.Node buildList1() {
         LastKNode.Node root = new LastKNode.Node(0);
         LastKNode.Node lastNode = root;
-        for (int i = 3; i < 50; i += 3) {
-            LastKNode.Node tmpNode = new LastKNode.Node(i);
+        for (int i = 0; i < 10; i++) {
+            LastKNode.Node tmpNode = new LastKNode.Node(i * 2 + 2);
             lastNode.next = tmpNode;
             lastNode = tmpNode;
         }
@@ -26,10 +26,10 @@ public class MergeTwoSortedLinkedList {
     }
 
     public static LastKNode.Node buildList2() {
-        LastKNode.Node root = new LastKNode.Node(0);
+        LastKNode.Node root = new LastKNode.Node(1);
         LastKNode.Node lastNode = root;
-        for (int i = 1; i < 60; i += 2) {
-            LastKNode.Node tmpNode = new LastKNode.Node(i);
+        for (int i = 0; i < 10; i++) {
+            LastKNode.Node tmpNode = new LastKNode.Node(2 * i + 1);
             lastNode.next = tmpNode;
             lastNode = tmpNode;
         }
@@ -37,16 +37,15 @@ public class MergeTwoSortedLinkedList {
     }
 
     public static LastKNode.Node mergeTwoSortedLinkedList(LastKNode.Node h1, LastKNode.Node h2) {
-        LastKNode.Node retHead = h1.value < h2.value ? h1 : h2;
-        LastKNode.Node head1 = h1.value < h2.value ? h2 : h1, head2 = retHead;
-        while (head1 != null && head2 != null) {
-            if(head1.value < head2.value){// head1 -> head2
-                LastKNode.Node tmpNode = head2;
-                head2 = head2.next;
-                head1.next = tmpNode;
-            }else{
-
-            }
+        LastKNode.Node retHead;
+        if (h1 == null) return h2;
+        if (h2 == null) return h1;
+        if (h1.value < h2.value) {
+            retHead = h1;
+            h1.next = mergeTwoSortedLinkedList(h1.next, h2);
+        } else {
+            retHead = h2;
+            h2.next = mergeTwoSortedLinkedList(h2.next, h1);
         }
         return retHead;
     }
@@ -55,5 +54,7 @@ public class MergeTwoSortedLinkedList {
         printLinkedList(buildList1());
         System.out.println();
         printLinkedList(buildList2());
+        System.out.println();
+        printLinkedList(mergeTwoSortedLinkedList(buildList1(), buildList2()));
     }
 }
