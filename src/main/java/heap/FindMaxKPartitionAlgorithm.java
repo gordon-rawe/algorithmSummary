@@ -8,15 +8,6 @@ import java.util.Random;
  */
 public class FindMaxKPartitionAlgorithm {
 
-    public static int[] generateRandomNumbers() {
-        Random seed = new Random();
-        int[] retValue = new int[seed.nextInt(100)];
-        for (int i = 0; i < retValue.length; i++) {
-            retValue[i] = seed.nextInt(1000);
-        }
-        return retValue;
-    }
-
     public static void swap(int[] src, int from, int to) {
         int tmp = src[from];
         src[from] = src[to];
@@ -34,12 +25,13 @@ public class FindMaxKPartitionAlgorithm {
         return low;
     }
 
-    public static int[] findMinK(int[] array, int n) {
-        int index = partition(array, 0, n - 1);
-        int[] ret = new int[n];
-        int start = 0, end = n - 1;
-        while (index != n - 1) {
-            if (index > n - 1) {
+    public static int[] findMinK(int[] array, int k) {
+        int len = array.length;
+        int index = partition(array, 0, len - 1);
+        int[] ret = new int[k];
+        int start = 0, end = len - 1;
+        while (index != k - 1) {
+            if (index > k - 1) {
                 end = index - 1;
                 index = partition(array, start, end);
             } else {
@@ -47,7 +39,7 @@ public class FindMaxKPartitionAlgorithm {
                 index = partition(array, start, end);
             }
         }
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < k; i++) {
             ret[i] = array[i];
         }
         return ret;
