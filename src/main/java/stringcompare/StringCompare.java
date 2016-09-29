@@ -1,3 +1,5 @@
+package stringcompare;
+
 /**
  * Created by gordon on 16/9/26.
  */
