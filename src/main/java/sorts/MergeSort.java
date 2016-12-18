@@ -19,7 +19,7 @@ public class MergeSort {
 
     public static void mergeSort(int[] source) {
         int len = source.length;
-        sort(source, 0, len - 1);
+        divide(source, 0, len - 1);
     }
 
     public static void sort(int[] src, int low, int high) {
@@ -48,5 +48,27 @@ public class MergeSort {
         int[] list = buildArrayNumbers();
         mergeSort(list);
         Arrays.stream(list).forEach(System.out::println);
+    }
+
+    public static void divide(int[] src, int low, int high) {
+        int m = (low + high) / 2;
+        if (low < high) {
+            divide(src, low, m);
+            divide(src, m + 1, high);
+            conquer(src, low, m, high);
+        }
+    }
+
+    public static void conquer(int[] src, int low, int middle, int high) {
+        int[] tmpArr = new int[high - low + 1];
+        int i = low, j = middle + 1, k = 0;
+        while (i <= middle && j <= high) {
+            tmpArr[k++] = src[i] > src[j] ? src[i++] : src[j++];
+        }
+        while (i <= middle) tmpArr[k++] = src[i++];
+        while (j <= high) tmpArr[k++] = src[j++];
+        for (int l = 0; l < tmpArr.length; l++) {
+            src[l + low] = tmpArr[l];
+        }
     }
 }

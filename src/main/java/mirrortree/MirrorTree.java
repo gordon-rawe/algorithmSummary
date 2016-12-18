@@ -17,11 +17,4 @@ public class MirrorTree {
         if (head.left != null) mirrorTree(head.left);
         if (head.right != null) mirrorTree(head.right);
     }
-
-    public static void main(String[] args) {
-        TreeNode originalTree = TreeNode.buildBigTree();
-        TreeNode.traverse(originalTree);
-        mirrorTree(originalTree);
-        TreeNode.traverse(originalTree);
-    }
 }

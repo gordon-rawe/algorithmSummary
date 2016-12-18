@@ -1,5 +1,7 @@
 package oddevenswap;
 
+import lastk.LastKNode;
+
 import java.util.Arrays;
 import java.util.Random;
 
@@ -17,6 +19,17 @@ public class OddEvenSwap {
         return retValue;
     }
 
+    public static void reverseLinkedList(LastKNode.Node head) {
+        if (head == null || head.next == null) return;
+        LastKNode.Node current = head,aux;
+        while (current.next!=null){
+            aux = current.next;
+            current.next = current.next.next;
+            aux.next = head;
+            head = aux;
+        }
+    }
+
     public static void swap(int[] src, int from, int to) {
         int tmp = src[from];
         src[from] = src[to];
@@ -27,12 +40,16 @@ public class OddEvenSwap {
         if (src == null || src.length == 0) return;
         int p1 = 0, p2 = src.length - 1;
         while (p1 < p2) {
-            while (p1 < p2 && (src[p1] & 1) != 0) p1++;
-            while (p1 < p2 && (src[p2] & 1) == 0) p2--;
+            while (p1 < p2 && isEven(src[p1])) p1++;
+            while (p1 < p2 && isEven(src[p2])) p2--;
             if (p1 < p2) {
                 swap(src, p1, p2);
             }
         }
+    }
+
+    public static boolean isEven(int src) {
+        return (src & 1) == 0;
     }
 
     public static void main(String[] args) {

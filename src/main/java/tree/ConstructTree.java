@@ -4,14 +4,9 @@ package tree;
  * Created by gordon on 9/28/16.
  */
 public class ConstructTree {
-    public static TreeNode constructTree(int[] preOrder, int[] midOrder) {
+    public static TreeNode constructTree(int[] preOrder, int[] midOrder) throws Exception {
         if (preOrder == null || midOrder == null || preOrder.length != midOrder.length) return null;
-        try {
-            return constructCore(preOrder, 0, preOrder.length - 1, midOrder, 0, midOrder.length - 1);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
+        return constructCore(preOrder, 0, preOrder.length - 1, midOrder, 0, midOrder.length - 1);
     }
 
     public static TreeNode constructCore(int[] preOrder, int preStart, int preEnd, int[] midOrder, int midStart, int midEnd) throws Exception {
@@ -39,6 +34,22 @@ public class ConstructTree {
         return rootNode;
     }
 
+    public static TreeNode constructCore1(int[] preOrder, int preStart, int preEnd, int[] midOrder, int midStart, int midEnd) throws Exception {
+        int rootValue = preOrder[preStart];
+        TreeNode rootNode = new TreeNode(rootValue);
+        if(preStart==preEnd&&midStart==midEnd&&preOrder[preStart]==midOrder[midStart])return rootNode;
+        int midIndex = midStart;
+        while (midIndex<=midEnd && rootValue!=midOrder[midIndex])midIndex++;
+        if(midIndex == midEnd && rootValue!=midOrder[midIndex]) throw new Exception();
+        int leftLength = midIndex - midStart;
+        int leftPreEnd = preStart+leftLength;
+        if(leftLength >0)
+            rootNode.left = constructCore1(preOrder,preStart+1,leftPreEnd,midOrder,midStart,midIndex-1);
+        if(leftLength < preEnd-preStart)
+            rootNode.right = constructCore1(preOrder,leftPreEnd+1,preEnd,midOrder,midIndex+1,midEnd);
+        return rootNode;
+    }
+
     public static void printPreOrder(TreeNode rootNode) {
         if (rootNode == null) return;
         System.out.println(rootNode.value);
@@ -63,7 +74,12 @@ public class ConstructTree {
     public static void main(String[] args) {
         int[] preOrder = {1, 2, 4, 7, 3, 5, 6, 8};
         int[] midOrder = {4, 7, 2, 1, 5, 3, 8, 6};
-        TreeNode tree = constructTree(preOrder, midOrder);
+        TreeNode tree = null;
+        try {
+            tree = constructTree(preOrder, midOrder);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         System.out.println("/** pre order */");
         printPreOrder(tree);
         System.out.println("/** mid order */");

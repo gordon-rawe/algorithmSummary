@@ -36,7 +36,7 @@ public class FindMaxKAlgorithm {
         if (right < curSize && numbers[larger] < numbers[right]) larger = right;
         if (larger != index) {
             swap(larger, index);
-            maxHeapify(curSize, larger);
+            maxHeapify(curSize, larger);//交换了一个以后，不确定它后面的是否满足，所以需要递归一下
         }
     }
 
@@ -55,6 +55,44 @@ public class FindMaxKAlgorithm {
             heapSize--;
             maxHeapify(heapSize, 0);
         }
+    }
+
+    public static void swap(int[] source, int from, int to) {
+        int tmpValue = source[from];
+        source[from] = source[to];
+        source[to] = tmpValue;
+    }
+
+    public static void heapify(int[] source, int curSize, int index) {
+        int left = 2 * index + 1, right = 2 * index + 2;
+        int larger = index;
+        if (left < curSize && source[larger] < source[left]) larger = left;
+        if (right < curSize && source[larger] < source[right]) larger = right;
+        if (larger != index) {
+            swap(source, larger, index);
+            heapify(source, curSize, larger);
+        }
+    }
+
+    public static void buildMaxHeap(int[] source) {
+        for (int i = source.length / 2; i >= 0; i--) {
+            heapify(source, source.length, i);
+        }
+    }
+
+    public static int[] getLastK(int[] source, int k) {
+        if (k < 1 || source.length < k) return null;
+        int[] ret = new int[k];
+        int curSize = source.length - 1;
+        buildMaxHeap(source);
+        for (int i = 0; i < k; i++) {
+            swap(source, 0, curSize);
+            ret[i] = source[curSize];
+            curSize--;
+            heapify(source, curSize, 0);
+
+        }
+        return ret;
     }
 
     private int[] getSortedNumbers() {
@@ -88,12 +126,17 @@ public class FindMaxKAlgorithm {
     }
 
     public static void main(String[] args) {
-        FindMaxKAlgorithm algorithm = new FindMaxKAlgorithm(FindMaxKAlgorithm.generateRandomNumbers());
-        System.out.println("original numbers:");
-        Arrays.stream(algorithm.getOriginalNumbers()).forEach(System.out::println);
+//        FindMaxKAlgorithm algorithm = new FindMaxKAlgorithm(FindMaxKAlgorithm.generateRandomNumbers());
+//        System.out.println("original numbers:");
+//        Arrays.stream(algorithm.getOriginalNumbers()).forEach(System.out::println);
 //        System.out.println("sorted numbers:");
 //        Arrays.stream(algorithm.getSortedNumbers()).forEach(System.out::println);
-        System.out.println("max numbers:");
-        Arrays.stream(algorithm.getMaxKNumbers(4)).forEach(System.out::println);
+//        System.out.println("max numbers:");
+//        Arrays.stream(algorithm.getMaxKNumbers(4)).forEach(System.out::println);
+        int[] source = new int[]{1, 2, 3, 4, 5, 6, 7, 8};
+        for (int i : getLastK(source, 3)) {
+            System.out.println(i);
+        }
+
     }
 }

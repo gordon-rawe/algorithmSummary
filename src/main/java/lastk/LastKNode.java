@@ -31,6 +31,13 @@ public class LastKNode {
         }
     }
 
+    public static void printLinkedListR(Node head) {
+        if (head != null) {
+            printLinkedListR(head.next);
+            System.out.println(head.value);
+        }
+    }
+
     public static void printLastK(Node head, int k) throws Exception {
         if (head == null) throw new Exception("null linked list found");
         if (k <= 0) throw new Exception("k should be no smaller than 1.");
@@ -49,7 +56,7 @@ public class LastKNode {
 
     public static void main(String[] args) {
         Node source = buildList();
-        printLinkedList(source);
+        printLinkedListR(source);
         try {
             printLastK(source, 1);
         } catch (Exception e) {

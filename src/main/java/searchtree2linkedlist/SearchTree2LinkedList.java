@@ -42,10 +42,28 @@ public class SearchTree2LinkedList {
     }
 
     public static void main(String[] args) {
-        TreeNode head = searchTreeToLinkedList(TreeNode.buildTree());
+        TreeNode head = tree2link(TreeNode.buildTree());
         while (head != null) {
             System.out.println(head.value);
             head = head.right;
         }
+    }
+
+    public static TreeNode head;
+
+    public static TreeNode tree2link(TreeNode root) {
+        if (root == null) return root;
+        traverseNodes(root);
+        while (head.left!=null) head = head.left;
+        return head;
+    }
+
+    public static void traverseNodes(TreeNode node) {
+        if(node==null)return;
+        if(node.left!=null)traverseNodes(node.left);
+        node.left = head;
+        if(head!=null) head.right = node;
+        head = node;
+        if(node.right!=null) traverseNodes(node.right);
     }
 }

@@ -61,9 +61,26 @@ public class TreeNode {
         return sameTree(src.left, dest.left) && sameTree(src.right, dest.right);
     }
 
+    public static boolean containTree(TreeNode parent, TreeNode child) {
+        if (child == null) return true;
+        if (parent == null) return false;
+        if (parent.value != child.value) return false;
+        return containTree(parent.left, child) && containTree(parent.right, child);
+    }
+
+    public static boolean judgeSubTree(TreeNode parent, TreeNode child) {
+        boolean found = false;
+        if (parent != null && child != null) {
+            found = containTree(parent, child);
+            if (!found) found = judgeSubTree(parent.left, child);
+            if (!found) found = judgeSubTree(parent.right, child);
+        }
+        return found;
+    }
+
     public static void main(String[] args) {
         traverse(buildBigTree());
         System.out.println(containChildTree(buildBigTree(), buildChildTree()));
-        System.out.println(sameTree(buildBigTree(),buildBigTree()));
+        System.out.println(sameTree(buildBigTree(), buildBigTree()));
     }
 }

@@ -35,7 +35,8 @@ public class PrintAllCharCombinations {
         System.out.println();
     }
 
-    public static void main(String[] args) {
-        findEightQueenPositions("abcdefg");
+    public static void main(String[] args) throws Exception {
+        char[] source = "abc".toCharArray();
+        recurse(source,source.length,0);
     }
 }
