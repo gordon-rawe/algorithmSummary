@@ -9,6 +9,13 @@ public class Node {
     public Node next;
     public int value;
 
+    public Node() {
+    }
+
+    public Node(int value) {
+        this.value = value;
+    }
+
     public static Node buildLinkedList() {
         Node firstNode = new Node();
         Node headNode = firstNode;

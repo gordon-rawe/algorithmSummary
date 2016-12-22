@@ -65,7 +65,7 @@ public class TreeNode {
         if (child == null) return true;
         if (parent == null) return false;
         if (parent.value != child.value) return false;
-        return containTree(parent.left, child) && containTree(parent.right, child);
+        return containTree(parent.left, child.left) && containTree(parent.right, child.right);
     }
 
     public static boolean judgeSubTree(TreeNode parent, TreeNode child) {
@@ -83,4 +83,12 @@ public class TreeNode {
         System.out.println(containChildTree(buildBigTree(), buildChildTree()));
         System.out.println(sameTree(buildBigTree(), buildBigTree()));
     }
+
+    public static boolean sameTrees(TreeNode one,TreeNode two){
+        if(one==null && two==null)return true;
+        if(one==null||two==null)return false;
+        if(one.value!=two.value)return false;
+        return sameTrees(one.left,two.left)&&sameTrees(one.right,two.right);
+    }
+
 }

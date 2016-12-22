@@ -110,19 +110,41 @@ public class Node {
         return p2;
     }
 
-    static int counter = 1;
+    public static int current = 1;
 
-    public static void printLaskKR(Node node, int k) {
-        if (node != null) {
-            printLaskKR(node.next, k);
-            if (counter++ == k) System.out.println(node.value);
+    public static Node findLastKthNodeRecursive(Node node, int k) {
+        if(node==null)return null;
+        Node n = null;
+        if (node.next != null) {
+            n = findLastKthNodeRecursive(node.next, k);
         }
+        if (current++ == k) {
+            return node;
+        } else {
+            return n;
+        }
+    }
+
+    public static Node findLastKthNode(Node head, int k) {
+        if (head == null || k <= 0) return null;
+        Node node1 = head;
+        for (int i = 0; i < k - 1; i++) {
+            if (node1.next != null) node1 = node1.next;
+            else return null;
+        }
+        Node node2 = head;
+        while (node1.next != null) {
+            node1 = node1.next;
+            node2 = node2.next;
+        }
+        return node2;
     }
 
     public static void main(String[] args) {
         Node list = buildLinkedList();
         printLinkedList(list);
-        printLaskKR(list, 3);
+        Node node = findLastKthNodeRecursive(list,4);
+        System.out.println(node==null?"null":node.value);
     }
 
     public static Node reverseLists(Node head) {
@@ -179,5 +201,26 @@ public class Node {
             two = two.next;
         }
         return null;
+    }
+
+    public static void printReversely() {
+
+    }
+
+    public static linknode.Node deleteNode(linknode.Node head, linknode.Node nodeToDelete) {
+        if (nodeToDelete == null || head == null) return head;
+        if (nodeToDelete.next != null) {/*要删除的节点有下一个节点,拷贝内容*/
+            nodeToDelete.value = nodeToDelete.next.value;
+            nodeToDelete.next = nodeToDelete.next.next;
+        } else if (nodeToDelete == head) {/*头部只有一个节点*/
+            return null;
+        } else {/*只剩下最后一个节点了*/
+            linknode.Node node = head;
+            while (node.next != nodeToDelete) {
+                node = node.next;
+            }
+            node.next = null;
+        }
+        return head;
     }
 }
